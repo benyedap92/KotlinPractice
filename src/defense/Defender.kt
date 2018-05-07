@@ -32,11 +32,10 @@ class Defender(val radar: Radar) : Observer {
             val time = LocalDateTime.now().format(formatter)
             println("Antimissile rocket launched for $i. time at $time")
             Thread.sleep(1000)
-            val result = wasAntiMissileSuccessful()
+            val result = radar.wasAntiMissileSuccessful(rocket)
             val resultString = if (result) "successful" else "unsuccessful"
             println("Defense action was $resultString")
             if (result) {
-                radar.rocketDestroyed(rocket)
                 break
             }
             if (!result && i == 3) {
@@ -44,11 +43,5 @@ class Defender(val radar: Radar) : Observer {
             }
         }
         println("\n")
-
     }
-
-    private fun wasAntiMissileSuccessful(): Boolean {
-        return (Random().nextBoolean())//TODO move it to Radar
-    }
-
 }

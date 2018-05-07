@@ -20,6 +20,5 @@ fun main(args: Array<String>) {
         println("Attack $i.")
         sleep(Random().nextInt(1000..5000).toLong())
         attacker.launchRocket()
-
     }
 }
